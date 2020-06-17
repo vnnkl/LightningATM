@@ -4,7 +4,7 @@ import os
 import math
 from shutil import copyfile
 
-from papirus import Papirus
+from inky import InkyPHAT
 
 import utils
 
@@ -112,10 +112,11 @@ conf = create_config()
 # TODO: Add variable to set certificate check to true or false
 
 # Papirus eInk size is 128 x 96 pixels
-WHITE = 1
-BLACK = 0
-PAPIRUSROT = 0
-PAPIRUS = Papirus(rotation=PAPIRUSROT)
+WHITE = 0
+BLACK = 1
+RED, YELLOW = 2
+inky_display = InkyPHAT("red")
+inky_display.set_border(inky_display.WHITE)
 
 # API URL for coingecko
 COINGECKO_URL_BASE = "https://api.coingecko.com/api/v3/"

@@ -33,8 +33,8 @@ def update_startup_screen():
         font=utils.create_font("freemono", 14),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_qr_request():
@@ -57,8 +57,8 @@ def update_qr_request():
         font=utils.create_font("freemono", 20),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
     for i in range(0, 3):
         draw.text(
@@ -67,8 +67,8 @@ def update_qr_request():
             fill=config.BLACK,
             font=utils.create_font("freemono", 50),
         )
-        config.PAPIRUS.display(image)
-        config.PAPIRUS.partial_update()
+        inky_display.set_image(image)
+        inky_display.show()
         draw.rectangle((75, 50, 115, 90), fill=config.WHITE, outline=config.WHITE)
         time.sleep(1)
 
@@ -87,8 +87,9 @@ def update_qr_request():
         fill=config.BLACK,
         font=utils.create_font("freemono", 20),
     )
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.partial_update()
+    
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_qr_failed():
@@ -117,8 +118,8 @@ def update_qr_failed():
         font=utils.create_font("freemono", 20),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.partial_update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_payout_screen():
@@ -143,8 +144,8 @@ def update_payout_screen():
         font=utils.create_font("freemono", 15),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
     # scan the invoice
     # TODO: I notice this is commented out, I presume this function should _not_ be
@@ -171,8 +172,8 @@ def update_payment_failed():
         (45, 65), "operator.", fill=config.BLACK, font=utils.create_font("freemono", 17)
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_thankyou_screen():
@@ -196,8 +197,8 @@ def update_thankyou_screen():
         fill=config.BLACK,
         font=utils.create_font("freemono", 14),
     )
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
     time.sleep(5)
 
 
@@ -223,8 +224,8 @@ def update_nocoin_screen():
         font=utils.create_font("freemono", 20),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_lnurl_generation():
@@ -246,8 +247,8 @@ def update_lnurl_generation():
         font=utils.create_font("freemono", 20),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.partial_update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_shutdown_screen():
@@ -269,8 +270,8 @@ def update_shutdown_screen():
         (45, 65), "operator.", fill=config.BLACK, font=utils.create_font("freemono", 17)
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_wallet_scan():
@@ -299,8 +300,8 @@ def update_wallet_scan():
         font=utils.create_font("freemono", 18),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
     time.sleep(2)
 
 
@@ -330,8 +331,8 @@ def update_lntxbot_balance(balance):
         font=utils.create_font("freemono", 18),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
     time.sleep(3)
 
 
@@ -361,8 +362,8 @@ def update_btcpay_lnd():
         font=utils.create_font("freemono", 16),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
     time.sleep(3)
 
 
@@ -412,15 +413,15 @@ def update_amount_screen():
         font=utils.create_font("freemono", 14),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.partial_update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def update_blank_screen():
     image, width, height, draw = init_screen(color=config.WHITE)
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def menu_screen():
@@ -439,8 +440,8 @@ def menu_screen():
         (40, 40), "Menu 2", fill=config.BLACK, font=utils.create_font("freemono", 20),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.partial_update()
+    inky_display.set_image(image)
+    inky_display.show()
 
     while config.PUSHES <= 2:
         print(config.PUSHES)
@@ -450,7 +451,7 @@ def menu_screen():
 def init_screen(color):
     """Prepare the screen for drawing and return the draw variables
     """
-    image = Image.new("1", config.PAPIRUS.size, color)
+    image = Image.new("P", (config.inky_display.WIDTH, config.inky_display.HEIGHT), color)
     # Set width and height of screen
     width, height = image.size
     # prepare for drawing

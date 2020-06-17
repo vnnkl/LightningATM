@@ -57,7 +57,7 @@ def generate_lnurl_qr(lnurl):
 def draw_lnurl_qr(qr_img):
     """draw a lnurl qr code on the e-ink screen
     """
-    image = Image.new("1", config.PAPIRUS.size, config.BLACK)
+    image = Image.new("P", (config.inky_display.WIDTH, config.inky_display.HEIGHT), config.BLACK)
     draw = ImageDraw.Draw(image)
     draw.bitmap((0, 0), qr_img, fill=config.WHITE)
     draw.text(
@@ -73,8 +73,8 @@ def draw_lnurl_qr(qr_img):
         font=utils.create_font("freemonobold", 16),
     )
 
-    config.PAPIRUS.display(image)
-    config.PAPIRUS.update()
+    inky_display.set_image(image)
+    inky_display.show()
 
 
 def get_lnurl_balance():
