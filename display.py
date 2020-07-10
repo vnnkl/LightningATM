@@ -7,7 +7,10 @@ import config
 import utils
 
 from PIL import Image, ImageFont, ImageDraw
+from inky import InkyPHAT
 
+inky_display = InkyPHAT("red")
+inky_display.set_border(inky_display.WHITE)
 
 def update_startup_screen():
     """Show startup screen on eInk Display
@@ -23,13 +26,13 @@ def update_startup_screen():
     draw.text(
         (10, 20),
         "LightningATM",
-        fill=config.BLACK,
+        fill=config.RED,
         font=utils.create_font("sawasdee", 30),
     )
     draw.text(
         (7, 75),
         "- please insert coins -",
-        fill=config.BLACK,
+        fill=config.RED,
         font=utils.create_font("freemono", 14),
     )
 
@@ -84,7 +87,7 @@ def update_qr_request():
     draw.text(
         (15, 35),
         "for " + str(math.floor(config.SATS)) + " sats.",
-        fill=config.BLACK,
+        fill=config.RED,
         font=utils.create_font("freemono", 20),
     )
     
@@ -134,7 +137,7 @@ def update_payout_screen():
     draw.text(
         (15, 30),
         str(math.floor(config.SATS)) + " sats",
-        fill=config.BLACK,
+        fill=config.RED,
         font=utils.create_font("freemono", 20),
     )
     draw.text(

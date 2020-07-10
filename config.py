@@ -114,7 +114,8 @@ conf = create_config()
 # Papirus eInk size is 128 x 96 pixels
 WHITE = 0
 BLACK = 1
-RED, YELLOW = 2
+RED = 2
+YELLOW = 2
 inky_display = InkyPHAT("red")
 inky_display.set_border(inky_display.WHITE)
 

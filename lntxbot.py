@@ -19,6 +19,14 @@ import utils
 # TODO: Add variable to set certificate check to true or false
 # TODO: Add evaluation for credentials after scanning
 
+from inky import InkyPHAT
+RED = 2
+YELLOW = 2
+WHITE = 0
+BLACK = 1
+inky_display = InkyPHAT("red")
+inky_display.set_border(inky_display.WHITE)
+
 logger = logging.getLogger("LNTXBOT")
 
 
